@@ -24,29 +24,39 @@ class Audiolist extends StatelessWidget {
 
               Row(
               children: [
-                for (int i=1; i< 10; i++)
+                for (int i=1; i<= 10; i++)
 
                 Center(
-                  heightFactor: 30,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _audioservex.playsound(audioPath);
-                    },
-                    child: const Text("Play"),
+                  
+                  child: Column(
+                    children: [
+
+                      ElevatedButton(
+                        onPressed: () {
+                          _audioservex.playsound(audioPath);
+                        },
+                        child: const Text("Play"),
+                      ),
+
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          _audioservex.stopsound();
+                        },
+                        child: const Text("Stop"),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+
+                    ],
                   ),
+                  heightFactor: 10,
+
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    _audioservex.stopsound();
-                  },
-                  child: const Text("Stop"),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
+
               ],
             ),
           ],
