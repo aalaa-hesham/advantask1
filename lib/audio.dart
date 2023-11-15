@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'audioserv.dart';
 class Audiolist extends StatefulWidget {
   const Audiolist({super.key});
 
@@ -7,6 +9,7 @@ class Audiolist extends StatefulWidget {
 }
 
 class _AudiolistState extends State<Audiolist> {
+  Audioservex _audioservex = Audioservex();
   List<String> typeaudio = [
     'assets/Free_Test_Data_100KB_MP3.mp3' ,
     'assets/lighter-154853.mp3' ,
@@ -15,8 +18,8 @@ class _AudiolistState extends State<Audiolist> {
   ] ;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return
+       SingleChildScrollView(
         scrollDirection: Axis.vertical,
 child: Row(
   children: [
@@ -25,15 +28,39 @@ ListView.builder(
       return
         Row(
           children: [
-            ElevatedButton(onPressed: (){
-              typeaudio[index].toString();
-            }, child: Text("open"))
+            for (int i=1; i<=10; i++)
+
+      // Rest of your code
+
+      ElevatedButton(
+        onPressed: () {
+          _audioservex.initaudio(typeaudio);
+        },
+        child: Text("open"),
+      ),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Audioservex.playsound(typeaudio);
+              },
+              child: Text("play"),
+            ),const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Audioservex.stopsound(typeaudio);
+              },
+              child: Text("stop"),
+            ),
           ],
         );
     })
   ],
 ),
-      ),
+
     );
   }
 }
