@@ -6,9 +6,15 @@ class Audiolist extends StatelessWidget {
 
   final List<String> typeaudio = [
     'assets/Free_Test_Data_100KB_MP3.mp3',
+    'assets/lighter-.mp3',
+    'assets/mixkit-arcade-retro-game-over-213.wav',
+    'assets/mouse-click-153941.mp3',
+    'assets/Free_Test_Data_100KB_MP3.mp3',
     'assets/lighter-154853.mp3',
     'assets/mixkit-arcade-retro-game-over-213.wav',
     'assets/mouse-click-153941.mp3',
+    'assets/lighter-.mp3',
+    'assets/Free_Test_Data_100KB_MP3.mp3',
   ];
 
   final Audioservex _audioservex = Audioservex();
@@ -24,36 +30,43 @@ class Audiolist extends StatelessWidget {
 
               Row(
               children: [
-                for (int i=1; i<= 10; i++)
+
 
                 Center(
                   
-                  child: Column(
-                    children: [
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 700.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60), color: Colors.green),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                _audioservex.playsound(audioPath);
+                              },
+                              child: const Text("Play"),
+                            ),),
 
-                      ElevatedButton(
-                        onPressed: () {
-                          _audioservex.playsound(audioPath);
-                        },
-                        child: const Text("Play"),
-                      ),
+                             SizedBox(
+                              height: 15,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                _audioservex.stopsound();
+                              },
+                              child: const Text("Stop"),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
 
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _audioservex.stopsound();
-                        },
-                        child: const Text("Stop"),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
 
-                    ],
+
+                      ],
+                    ),
                   ),
-                  heightFactor: 10,
 
                 ),
 
